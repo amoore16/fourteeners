@@ -1,0 +1,32 @@
+<div class="wrapper">
+    <div class="mountain-list">
+        <h2>Front Range Mountains</h2>
+        <ul class="mountains">
+            <li *ngFor="let mountain of mountains"
+                [class.selected]="mountain === selectedMountain"
+                (click)="onSelect(mountain)">
+                <span class="badge">{{mountain.rank}}</span> {{mountain.name}} <span class="elevation">{{mountain.elevation}} ft.</span>
+            </li>
+        </ul>      
+    </div>
+    <div *ngIf="selectedMountain" class="mountain-details">
+        <div class=mountain>
+            <h2>{{ selectedMountain.name | uppercase }} Details</h2>
+            <span>rank: </span>{{selectedMountain.rank}} <br>
+            <span>name: </span>{{selectedMountain.name}} <br>
+            <span>elevation: </span>{{selectedMountain.elevation}} <br>
+            <span>range: </span>{{selectedMountain.range}} <br>
+        </div>
+        <button ng-click="show = !show">
+            edit
+        </button>
+        <div ng-show="show">
+            <label>name:
+                <input [(ngModel)]="selectedMountain.name" placeholder="name">
+            </label>
+        </div>
+    </div>   
+      
+</div>
+
+ 
